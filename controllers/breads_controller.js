@@ -12,6 +12,22 @@ breads.get('/', (req, res) => {
   // res.send(Bread)
 })
 
+// CREATE
+breads.post('/', (req, res) => {
+  console.log(req.body)
+  if(req.body.hasGluten === 'on') {
+    req.body.hasGluten = 'true'
+  } else {
+    req.body.hasGluten = 'false'
+  }
+  Bread.push(req.body)
+  res.redirect('/breads')
+})
+
+// NEW
+breads.get('/new', (req, res) => {
+  res.render('new')
+})
 
 
 // SHOW
